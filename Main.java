@@ -6,6 +6,11 @@ public class Main {
     public static Player player2;
 
     public static void main(String[] args) {
+        System.out.println(
+                "Welcome to hangman! When prompted, you can either input one letter, or the full phrase. Before the game, a random amount of points is chosen.");
+        System.out.println("For every letter in the word you guess, you get the amount of points. ");
+        System.out.println("Getting the phrase correct gets you 5x points. Enjoy!");
+
         boolean solved = false;
         Scanner scan = new Scanner(System.in);
         System.out.println("Input player 1 name: ");
@@ -26,6 +31,15 @@ public class Main {
                 solved = true;
             }
 
+        }
+        System.out.println(player1.getName() + ", you got " + player1.getPoints() + " points.");
+        System.out.println(player2.getName() + ", you got " + player2.getPoints() + " points.");
+        if (player1.getPoints() > player2.getPoints()) {
+            System.out.println(player1.getName() + " wins!");
+        } else if (player2.getPoints() > player1.getPoints()) {
+            System.out.println(player2.getName() + " wins!");
+        } else {
+            System.out.println("Tie!");
         }
     }
 
