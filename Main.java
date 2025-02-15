@@ -17,21 +17,25 @@ public class Main {
         player1 = new Player(scan.nextLine());
         System.out.println("Input player 2 name: ");
         player2 = new Player(scan.nextLine());
-
         Game myGame = new Game();
+
+        // Start with random person's turn
         if (Math.random() > 0.5) {
             Player.setTurn(true);
         } else {
             Player.setTurn(false);
         }
+        // loop guesses
         while (solved == false) {
             System.out.println(getPlayer().getName() + ", input guess: ");
             String guess = scan.nextLine();
             if (myGame.getGuess(guess, getPlayer()) == true) {
-                solved = true;
+                solved = true; // getGuess() returns true if phrase is completed
             }
 
         }
+
+        // ending sequence: print scores and winnter
         System.out.println(player1.getName() + ", you got " + player1.getPoints() + " points.");
         System.out.println(player2.getName() + ", you got " + player2.getPoints() + " points.");
         if (player1.getPoints() > player2.getPoints()) {
@@ -43,6 +47,7 @@ public class Main {
         }
     }
 
+    // true = player1, false = player2
     public static Player getPlayer() {
         if (Player.getTurn() == true) {
             return player1;
